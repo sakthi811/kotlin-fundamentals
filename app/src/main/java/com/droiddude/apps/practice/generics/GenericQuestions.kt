@@ -22,7 +22,10 @@ fun main() {
     val question2 = Question<Boolean>("The sky is green. True or false", false, DifficultyLevel.Easy)
     val question3 = Question<Int>("How many days are there between full moons?", null , DifficultyLevel.Hard)
 
-    println(question1.toString())
-    question2.print()
-    question3.print()
+//    println(question1.toString())
+//    question2.print()
+//    question3.print()
+
+    val genericType = CustomTriple(10,"Sakthi",false)
+    genericType.printTypes()
 }

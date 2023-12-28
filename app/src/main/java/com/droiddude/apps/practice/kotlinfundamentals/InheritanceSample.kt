@@ -32,8 +32,8 @@ open class Phone(var isScreenLightOn: Boolean = false){
 
 fun main() {
     val foldablePhone = FoldablePhone(isFolded = true)
-    foldablePhone.unfold()
-    //foldablePhone.switchOn()
+    foldablePhone.fold()
+    foldablePhone.switchOn()
     foldablePhone.checkPhoneScreenLight()
     foldablePhone.switchOff()
 }

@@ -3,14 +3,16 @@ package com.droiddude.apps.practice.flows
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class TimerViewModel(
+    private val dispatcher: DispatcherProvider
+) : ViewModel() {
 
     val countDownValue = flow<Int> {
-        val startingValue = 10
+        val startingValue = 5
         var counter = startingValue
         emit(startingValue)
         while( counter > 0) {
@@ -18,18 +20,20 @@ class MainViewModel : ViewModel() {
             counter--
             emit(counter)
         }
-    }
+    }.flowOn(dispatcher.main)
 
     init {
         collectTimerValue()
     }
 
     private fun collectTimerValue() {
-        viewModelScope.launch {
-            countDownValue.collectLatest { time ->
-                delay(3000L)
-                println("Timer value is $time")
-            }
+        viewModelScope.launch(dispatcher.main) {
+            // Collect operators example
+            countDownValue
+                .collect { time ->
+                    delay(1000L)
+                    println("Timer value is $time")
+                }
         }
     }
 }

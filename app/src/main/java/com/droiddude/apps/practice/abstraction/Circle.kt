@@ -3,7 +3,7 @@ package com.droiddude.apps.practice.abstraction
 import com.droiddude.apps.practice.abstraction.Constants.pi
 import kotlin.random.Random
 
-data class Circle(
+class Circle(
     val name : String,
     val radius : Double
 ) : Shape(name) {
@@ -15,16 +15,14 @@ data class Circle(
     companion object {
 
         fun generateRandomCircle() : Circle {
-            val radius = Random.nextDouble(1.0 , 20.0)
-            return Circle("circle$radius",radius)
+            val random = Random.nextDouble(10.0,100.0)
+            return Circle(name = "Random Circle",random)
         }
     }
 
     override fun area() = pi * radius * radius
 
-    override fun perimeter(): Double {
-        TODO("Not yet implemented")
-    }
+    override fun perimeter() = 2 * radius * pi
+
 }
 
-class NegativeValueException : Exception("You cannot create a circle with a negative Radius. Kindly enter a positive value")

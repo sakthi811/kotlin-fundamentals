@@ -7,7 +7,8 @@ class Triangle(
 ) : Shape(name) {
 
     init {
-        println("A Triangle is created with base base and height")
+        if(base < 0.0 || height < 0.0) throw NegativeValueException()
+        println("A Triangle is created with base base $base and height $height")
     }
 
     fun getName() {

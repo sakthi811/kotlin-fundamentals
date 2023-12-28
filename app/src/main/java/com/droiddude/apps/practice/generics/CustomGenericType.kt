@@ -1,6 +1,6 @@
 package com.droiddude.apps.practice.generics
 
-class CustomGenericType<A : Any,B : Any,C : Any>(
+class CustomTriple<A : Any,B : Any,C : Any>(
     var first:A,
     var second:B,
     var third:C
@@ -18,7 +18,7 @@ class CustomGenerics<A : Any>( val data : A) {
     }
 }
 
-class Search<T : Any> ( val value : T) {
+class Search<T : Any> (val value : T) {
     companion object {
         const val searchEngine : String = "Google"
     }

@@ -1,6 +1,6 @@
 package com.droiddude.apps.practice.abstraction
 
-class Rectangle (
+class Rectangle private constructor(
     val name : String,
     var length : Double,
     var width : Double
@@ -18,6 +18,7 @@ class Rectangle (
     ) : this(name,length.toDouble(), width.toDouble())
 
     init {
+        if(length < 0.0 || width < 0.0) throw NegativeValueException()
         println("A Rectangle is created with length = $length , width = $width")
     }
 
